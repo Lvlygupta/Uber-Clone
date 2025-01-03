@@ -24,7 +24,9 @@ Example:
 ## Response
 ### Success Response
 Status Code: 201 Created
+
 Body: A JSON object containing the user's token and user details.
+
 Example:
 ```json
 {
@@ -41,7 +43,9 @@ Example:
 
 ### Error Response
 Status Code: 400 Bad Request
+
 Body: A JSON object containing an array of error messages.
+
 Example:
 ```json
 {
@@ -77,7 +81,9 @@ Example:
 ## Response
 ### Success Response
 Status Code: 200 OK
+
 Body: A JSON object containing the user's token and user details.
+
 Example:
 ```json
 {
@@ -94,7 +100,9 @@ Example:
 
 ### Error Response
 Status Code: 400 Bad Request
+
 Body: A JSON object containing an array of error messages.
+
 Example:
 ```json
 {
@@ -104,9 +112,12 @@ Example:
     }
   ]
 }
+```
 
 Status Code: 401 Unauthorized
+
 Body: A JSON object the error messages.
+
 Example:
 ```json
 {
