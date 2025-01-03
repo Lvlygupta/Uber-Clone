@@ -22,10 +22,13 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.statics.matchPassword = async function(password){
+userSchema.methods.matchPassword = async function(password){
     return await bcrypt.compare(password,this.password);
 }
-userSchema.statics.getSignedToken = async function(){  
+userSchema.methods.getSignedToken = async function(){  
+    return await jwt.sign({id: this._id},process.env.JWT_SECRET);
+}
+userSchema.statics.getAuthToken = async function(){
     return await jwt.sign({id: this._id},process.env.JWT_SECRET);
 }
 userSchema.statics.hashpassword = async function(password){
