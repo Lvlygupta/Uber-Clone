@@ -26,10 +26,10 @@ userSchema.methods.matchPassword = async function(password){
     return await bcrypt.compare(password,this.password);
 }
 userSchema.methods.getSignedToken = async function(){  
-    return await jwt.sign({id: this._id},process.env.JWT_SECRET);
+    return await jwt.sign({id: this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
 }
 userSchema.statics.getAuthToken = async function(){
-    return await jwt.sign({id: this._id},process.env.JWT_SECRET);
+    return await jwt.sign({id: this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
 }
 userSchema.statics.hashpassword = async function(password){
     return await bcrypt.hash(password,10);

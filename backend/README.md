@@ -116,7 +116,7 @@ Example:
 
 Status Code: 401 Unauthorized
 
-Body: A JSON object the error messages.
+Body: A JSON object contaning the error messages.
 
 Example:
 ```json
@@ -124,6 +124,84 @@ Example:
   "errors": [
     {
       "msg": "Invalid Credentials"
+    }
+  ]
+}
+```
+
+# User Profile Endpoint
+
+## Endpoint
+`GET /users/profile`
+
+## Description
+This endpoint allows an authenticated user to retrieve their profile information.
+
+## Response
+### Success Response
+Status Code: 200 OK
+
+Body: A JSON object containing the user's profile information.
+
+Example:
+```json
+{
+  "_id": "user_id_here",
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "hashed_password_here",
+  "socketId": null
+}
+```
+
+### Error Response
+Status Code: 401 Unauthorized
+
+Body: A JSON object contaning the error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Unauthorized"
+    }
+  ]
+}
+```
+# User Logout Endpoint
+
+## Endpoint
+`GET /users/logout`
+
+## Description
+This endpoint allows an authenticated user to log out by clearing their authentication token.
+
+
+## Response
+### Success Response
+Status Code: 200 OK
+
+Body: A JSON object confirming the logout.
+
+Example:
+```json
+{
+  "msg": "Logged out successfully"
+}
+```
+
+### Error Response
+Status Code: 401 Unauthorized
+
+Body: A JSON object contaning the error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Unauthorized"
     }
   ]
 }
