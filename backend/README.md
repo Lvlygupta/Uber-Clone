@@ -206,3 +206,73 @@ Example:
   ]
 }
 ```
+
+# Driver Registration Endpoint
+
+## Endpoint
+`POST /driver/register`
+
+## Description
+This endpoint allows a new driver to register by providing their name, email, password, vehicle type, and number plate.
+
+## Request Body
+The request body must be a JSON object with the following fields:
+- `name` (string): The name of the driver. Must be at least 3 characters long.
+- `email` (string): The email of the driver. Must be a valid email address.
+- `password` (string): The password of the driver. Must be at least 6 characters long.
+- `vehicle.type` (string): The type of the vehicle. Must be one of `car`, `moto`, or `auto`.
+- `vehicle.numberPlate` (string): The number plate of the vehicle.
+
+Example:
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "password": "password123",
+  "vehicle": {
+    "type": "car",
+    "numberPlate": "ABC123"
+  }
+}
+```
+## Response
+### Success Response
+Status Code: 201 Created
+
+Body: A JSON object containing the user's token and user details.
+
+Example:
+```json
+{
+  "token": "jwt_token_here",
+  "driver": {
+    "_id": "driver_id_here",
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "password": "hashed_password_here",
+    "vehicle": {
+      "type": "car",
+      "numberPlate": "ABC123"
+    },
+    "isAvailable": false,
+    "socketId": null
+  }
+}
+```
+
+### Error Response
+Status Code: 400 Bad Request
+
+Body: A JSON object containing an array of error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Error message here"
+    }
+  ]
+}
+```
+
