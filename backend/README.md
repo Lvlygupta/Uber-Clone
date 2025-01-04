@@ -275,13 +275,13 @@ Example:
   ]
 }
 ```
-# User Login Endpoint
+# Driver Login Endpoint
 
 ## Endpoint
-`POST /users/login`
+`POST /driver/login`
 
 ## Description
-This endpoint allows an existing user to log in by providing their email and password.
+This endpoint allows an existing driver to log in by providing their email and password.
 
 ## Request Body
 The request body must be a JSON object with the following fields:
@@ -300,7 +300,7 @@ Example:
 ### Success Response
 Status Code: 200 OK
 
-Body: A JSON object containing the user's token and driver details.
+Body: A JSON object containing the driver's token and driver details.
 
 Example:
 ```json
@@ -352,10 +352,10 @@ Example:
 }
 ```
 
-# User Profile Endpoint
+# Driver Profile Endpoint
 
 ## Endpoint
-`GET /users/profile`
+`GET /driver/profile`
 
 ## Description
 This endpoint allows an authenticated driver to retrieve their profile information.
@@ -364,7 +364,7 @@ This endpoint allows an authenticated driver to retrieve their profile informati
 ### Success Response
 Status Code: 200 OK
 
-Body: A JSON object containing the user's profile information.
+Body: A JSON object containing the driver's profile information.
 
 Example:
 ```json
@@ -397,10 +397,10 @@ Example:
   ]
 }
 ```
-# User Logout Endpoint
+# Driver Logout Endpoint
 
 ## Endpoint
-`GET /users/logout`
+`GET /driver/logout`
 
 ## Description
 This endpoint allows an authenticated driver to log out by clearing their authentication token.
