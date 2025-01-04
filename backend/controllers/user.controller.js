@@ -23,7 +23,9 @@ module.exports.registerUser = async (req, res, next) => {
       email,
       password: hashpassword,
     });
-    const token = await userModel.getAuthToken();
+   
+    const token = await user.getSignedToken();
+    res.cookie('token',token);
     res.status(201).json({ token, user });
  
 };

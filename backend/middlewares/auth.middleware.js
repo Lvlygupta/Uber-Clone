@@ -43,7 +43,7 @@ try{
 
     const decoded = jwt.verify(token,process.env.JWT_SECRET);
            
-        
+        console.log(decoded);
     const driver = await driverModel.findById(decoded.id);
     req.driver = driver;
     return next();

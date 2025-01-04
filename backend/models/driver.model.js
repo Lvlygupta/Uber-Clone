@@ -43,9 +43,7 @@ driverSchema.methods.matchPassword = async function(password){
 driverSchema.methods.getSignedToken = async function(){  
     return await jwt.sign({id: this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
 }
-driverSchema.statics.getAuthToken = async function(){
-    return await jwt.sign({id: this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
-}
+
 driverSchema.statics.hashpassword = async function(password){
     return await bcrypt.hash(password,10);
 }

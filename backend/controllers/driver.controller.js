@@ -15,7 +15,8 @@ const {name , email , password  , vehicle} = req.body;
    const driver = await driverService.createDriver({
     name , email , password:hashpassword, numberPlate:vehicle.numberPlate , type:vehicle.type
    })
-   const token = await driverModel.getAuthToken();
+   const token = await driver.getSignedToken();
+   res.cookie('token',token);
    return res.status(201).json({token,driver});
 }
 

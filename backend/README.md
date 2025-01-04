@@ -275,4 +275,162 @@ Example:
   ]
 }
 ```
+# User Login Endpoint
 
+## Endpoint
+`POST /users/login`
+
+## Description
+This endpoint allows an existing user to log in by providing their email and password.
+
+## Request Body
+The request body must be a JSON object with the following fields:
+- `email` (string): The email of the user. Must be a valid email address.
+- `password` (string): The password of the user. Must be at least 6 characters long.
+
+Example:
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+```
+
+## Response
+### Success Response
+Status Code: 200 OK
+
+Body: A JSON object containing the user's token and driver details.
+
+Example:
+```json
+{
+  "token": "jwt_token_here",
+  "driver": {
+    "_id": "driver_id_here",
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "password": "hashed_password_here",
+    "vehicle": {
+      "type": "car",
+      "numberPlate": "ABC123"
+    },
+    "isAvailable": false,
+    "socketId": null
+  }
+}
+```
+
+### Error Response
+Status Code: 400 Bad Request
+
+Body: A JSON object containing an array of error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Error message here"
+    }
+  ]
+}
+```
+
+Status Code: 401 Unauthorized
+
+Body: A JSON object contaning the error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Invalid Credentials"
+    }
+  ]
+}
+```
+
+# User Profile Endpoint
+
+## Endpoint
+`GET /users/profile`
+
+## Description
+This endpoint allows an authenticated driver to retrieve their profile information.
+
+## Response
+### Success Response
+Status Code: 200 OK
+
+Body: A JSON object containing the user's profile information.
+
+Example:
+```json
+{
+  "_id": "driver_id_here",
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "password": "hashed_password_here",
+  "vehicle": {
+    "type": "car",
+    "numberPlate": "ABC123"
+  },
+  "isAvailable": false,
+  "socketId": null
+}
+```
+
+### Error Response
+Status Code: 401 Unauthorized
+
+Body: A JSON object contaning the error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Unauthorized"
+    }
+  ]
+}
+```
+# User Logout Endpoint
+
+## Endpoint
+`GET /users/logout`
+
+## Description
+This endpoint allows an authenticated driver to log out by clearing their authentication token.
+
+
+## Response
+### Success Response
+Status Code: 200 OK
+
+Body: A JSON object confirming the logout.
+
+Example:
+```json
+{
+  "msg": "Logged out successfully"
+}
+```
+
+### Error Response
+Status Code: 401 Unauthorized
+
+Body: A JSON object contaning the error messages.
+
+Example:
+```json
+{
+  "errors": [
+    {
+      "msg": "Unauthorized"
+    }
+  ]
+}
+```
